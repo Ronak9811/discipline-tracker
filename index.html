@@ -1,174 +1,208 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Discipline Tracker</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial;
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      color: white;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
 
-    .app {
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(10px);
-      padding: 20px;
-      border-radius: 20px;
-      width: 320px;
-      text-align: center;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
 
-    h1 {
-      margin-bottom: 15px;
-    }
+/* PAGE 1 */
+.page1 {
+  height: 100vh;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
-    }
+.light-btn {
+  padding: 15px 40px;
+  border: 1px solid #777;
+  color: white;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
 
-    .box {
-      padding: 15px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.2);
-      cursor: pointer;
-      transition: 0.3s;
-    }
+/* PAGE 2 */
+.page2 {
+  display: none;
+  height: 100vh;
+  display: flex;
+}
 
-    .box:hover {
-      background: rgba(255,255,255,0.4);
-    }
+.left, .right {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .done {
-      background: limegreen !important;
-      text-decoration: line-through;
-    }
+.left {
+  background: #0b0b0b;
+  color: white;
+}
 
-    #noteSection {
-      margin-top: 15px;
-      display: none;
-    }
+.right {
+  background: #f3f0ea;
+  color: black;
+}
 
-    input {
-      width: 90%;
-      padding: 8px;
-      border-radius: 8px;
-      border: none;
-      outline: none;
-    }
+.title {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  text-align: center;
+  letter-spacing: 8px;
+  font-size: 14px;
+}
 
-    button {
-      margin-top: 8px;
-      padding: 8px 15px;
-      border: none;
-      border-radius: 8px;
-      background: #00c6ff;
-      color: white;
-      cursor: pointer;
-    }
+.card {
+  width: 340px;
+  padding: 30px;
+  border-radius: 15px;
+}
 
-    .progress {
-      margin-top: 15px;
-      font-size: 14px;
-    }
+.left .card {
+  border: 1px solid rgba(255,255,255,0.1);
+}
 
-    .notes {
-      margin-top: 10px;
-      text-align: left;
-      font-size: 13px;
-      max-height: 120px;
-      overflow-y: auto;
-    }
-  </style>
+.right .card {
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 44px;
+}
+
+.subtitle {
+  letter-spacing: 3px;
+  font-size: 12px;
+}
+
+.line {
+  width: 40px;
+  height: 2px;
+  background: #c8a96a;
+  margin: 10px 0 20px;
+}
+
+.feature {
+  margin: 12px 0;
+  font-size: 14px;
+}
+
+button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #c8a96a;
+  background: transparent;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #c8a96a;
+  color: black;
+}
+
+/* FINAL PAGE */
+.final {
+  display: none;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(to right, black 50%, #f3f0ea 50%);
+  color: #ffd700;
+}
+
+.final img {
+  width: 320px;
+  border: 4px solid #ffd700;
+  border-radius: 10px;
+}
+
+.final button {
+  margin-top: 20px;
+  background: #ffd700;
+  border: none;
+}
+</style>
 </head>
 
 <body>
 
-<div class="app">
+<!-- PAGE 1 -->
+<div class="page1" id="page1">
+  <div class="light-btn" onclick="openPage2()">💡 TURN ON LIGHT</div>
+</div>
 
-  <h1>Discipline</h1>
+<!-- PAGE 2 -->
+<div class="page2" id="page2">
 
-  <div class="grid" id="grid"></div>
+<div class="title">WHAT YOU WANT ?</div>
 
-  <div id="noteSection">
-    <input type="text" id="noteInput" placeholder="What did you do today?">
-    <button onclick="saveNote()">Save</button>
+<!-- LEFT -->
+<div class="left">
+  <div class="card">
+    <div class="subtitle">I GOT</div>
+    <h1>BLACK</h1>
+    <div class="line"></div>
+
+    <div class="feature">Absorb heat five times faster</div>
+    <div class="feature">Save global warming</div>
+    <div class="feature">Water efficient</div>
+    <div class="feature">Nightmare for night itself</div>
+
+    <button onclick="showFinal()">CHOOSE BLACK →</button>
   </div>
+</div>
 
-  <div class="progress" id="progress"></div>
+<!-- RIGHT (ONLY TEXT CHANGED) -->
+<div class="right">
+  <div class="card">
+    <div class="subtitle">I GOT</div>
+    <h1>WHITE</h1>
+    <div class="line"></div>
 
-  <div class="notes" id="notesList"></div>
+    <div class="feature">Topper</div>
+    <div class="feature">Bodybuilder</div>
+    <div class="feature">Sportsman</div>
+    <div class="feature">Discipline</div>
+
+    <button onclick="showFinal()">CHOOSE WHITE →</button>
+  </div>
+</div>
 
 </div>
 
+<!-- FINAL PAGE -->
+<div class="final" id="final">
+  <img src="your-image.jpg">
+  <h2>😂 EVIDENCE CONFIRMED.<br>CASE CLOSED.</h2>
+  <button onclick="location.reload()">OK fine... 😂</button>
+</div>
+
 <script>
-
-let currentDay = null;
-let data = JSON.parse(localStorage.getItem("tracker")) || {};
-
-const grid = document.getElementById("grid");
-
-// Create boxes dynamically
-for (let i = 1; i <= 10; i++) {
-  let box = document.createElement("div");
-  box.className = "box";
-  box.innerText = "Day " + i;
-  box.onclick = () => selectDay(i);
-
-  if (data[i]) {
-    box.classList.add("done");
-  }
-
-  grid.appendChild(box);
+function openPage2() {
+  document.getElementById("page1").style.display = "none";
+  document.getElementById("page2").style.display = "flex";
 }
 
-function selectDay(day) {
-  currentDay = day;
-  document.getElementById("noteSection").style.display = "block";
+function showFinal() {
+  document.getElementById("page2").style.display = "none";
+  document.getElementById("final").style.display = "flex";
 }
-
-function saveNote() {
-  let note = document.getElementById("noteInput").value;
-
-  if (!note) return;
-
-  data[currentDay] = note;
-
-  localStorage.setItem("tracker", JSON.stringify(data));
-
-  document.getElementsByClassName("box")[currentDay - 1]
-    .classList.add("done");
-
-  document.getElementById("noteInput").value = "";
-
-  updateUI();
-}
-
-function updateUI() {
-  let completed = Object.keys(data).length;
-
-  document.getElementById("progress").innerText =
-    "Completed: " + completed + "/10";
-
-  let notesHTML = "";
-
-  for (let day in data) {
-    notesHTML += "Day " + day + ": " + data[day] + "<br>";
-  }
-
-  document.getElementById("notesList").innerHTML = notesHTML;
-}
-
-updateUI();
-
 </script>
 
 </body>
