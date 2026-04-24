@@ -1,209 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
-
-<style>
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  overflow: hidden;
-}
-
-/* PAGE 1 */
-.page1 {
-  height: 100vh;
-  background: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.light-btn {
-  padding: 15px 40px;
-  border: 1px solid #777;
-  color: white;
-  letter-spacing: 3px;
-  cursor: pointer;
-}
-
-/* PAGE 2 */
-.page2 {
-  display: none;
-  height: 100vh;
-  display: flex;
-}
-
-.left, .right {
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.left {
-  background: #0b0b0b;
-  color: white;
-}
-
-.right {
-  background: #f3f0ea;
-  color: black;
-}
-
-.title {
-  position: absolute;
-  top: 40px;
-  width: 100%;
-  text-align: center;
-  letter-spacing: 8px;
-  font-size: 14px;
-}
-
-.card {
-  width: 340px;
-  padding: 30px;
-  border-radius: 15px;
-}
-
-.left .card {
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-.right .card {
-  border: 1px solid rgba(0,0,0,0.1);
-}
-
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 44px;
-}
-
-.subtitle {
-  letter-spacing: 3px;
-  font-size: 12px;
-}
-
-.line {
-  width: 40px;
-  height: 2px;
-  background: #c8a96a;
-  margin: 10px 0 20px;
-}
-
-.feature {
-  margin: 12px 0;
-  font-size: 14px;
-}
-
-button {
-  margin-top: 20px;
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #c8a96a;
-  background: transparent;
-  letter-spacing: 2px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #c8a96a;
-  color: black;
-}
-
-/* FINAL PAGE */
-.final {
-  display: none;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: linear-gradient(to right, black 50%, #f3f0ea 50%);
-  color: #ffd700;
-}
-
-.final img {
-  width: 320px;
-  border: 4px solid #ffd700;
-  border-radius: 10px;
-}
-
-.final button {
-  margin-top: 20px;
-  background: #ffd700;
-  border: none;
-}
-</style>
+    <title>Play Sound</title>
 </head>
+<body style="text-align:center; margin-top:100px; font-family:sans-serif;">
 
-<body>
+    <h2>Click to Play Sound</h2>
 
-<!-- PAGE 1 -->
-<div class="page1" id="page1">
-  <div class="light-btn" onclick="openPage2()">💡 TURN ON LIGHT</div>
-</div>
+    <button onclick="playSound()" style="padding:10px 20px; font-size:18px;">
+        ▶ Play
+    </button>
 
-<!-- PAGE 2 -->
-<div class="page2" id="page2">
+    <!-- Audio file -->
+    <audio id="myAudio" src="finntastico-among-us-sound-157106.mp3"></audio>
 
-<div class="title">WHAT YOU WANT ?</div>
-
-<!-- LEFT -->
-<div class="left">
-  <div class="card">
-    <div class="subtitle">I GOT</div>
-    <h1>BLACK</h1>
-    <div class="line"></div>
-
-    <div class="feature">Absorb heat five times faster</div>
-    <div class="feature">Save global warming</div>
-    <div class="feature">Water efficient</div>
-    <div class="feature">Nightmare for night itself</div>
-
-    <button onclick="showFinal()">CHOOSE BLACK →</button>
-  </div>
-</div>
-
-<!-- RIGHT (ONLY TEXT CHANGED) -->
-<div class="right">
-  <div class="card">
-    <div class="subtitle">I GOT</div>
-    <h1>WHITE</h1>
-    <div class="line"></div>
-
-    <div class="feature">Topper</div>
-    <div class="feature">Bodybuilder</div>
-    <div class="feature">Sportsman</div>
-    <div class="feature">Discipline</div>
-
-    <button onclick="showFinal()">CHOOSE WHITE →</button>
-  </div>
-</div>
-
-</div>
-
-<!-- FINAL PAGE -->
-<div class="final" id="final">
-  <img src="your-image.jpg">
-  <h2>😂 EVIDENCE CONFIRMED.<br>CASE CLOSED.</h2>
-  <button onclick="location.reload()">OK fine... 😂</button>
-</div>
-
-<script>
-function openPage2() {
-  document.getElementById("page1").style.display = "none";
-  document.getElementById("page2").style.display = "flex";
-}
-
-function showFinal() {
-  document.getElementById("page2").style.display = "none";
-  document.getElementById("final").style.display = "flex";
-}
-</script>
+    <script>
+        function playSound() {
+            document.getElementById("myAudio").play();
+        }
+    </script>
 
 </body>
 </html>
